@@ -19,4 +19,4 @@ The full How-to can be found at https://github.com/aws/aws-amplify/tree/master/p
 
 ### Setup User Pool on AWS Cognito Console
   - Under App Integration
-  
+  [](https://github.com/nrao57/AWSCognitoManual/blob/master/userpool.png)
