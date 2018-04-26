@@ -39,6 +39,6 @@ The full How-to can be found at https://github.com/aws/aws-amplify/tree/master/p
 
 4. Add polcies for the Amazon Resources you want the signed-in users to have access to 
 
-###To Register New Users
+### To Register New Users
 GetSession needed to get current logged in user
 
