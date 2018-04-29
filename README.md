@@ -19,7 +19,7 @@ The full How-to can be found at https://github.com/aws/aws-amplify/tree/master/p
 
 ### Setup User Pool on AWS Cognito Console
   - Under App Integration
-  ![](https://github.com/nrao57/AWSCognitoManual/blob/master/userpool.png)
+  ![](https://github.com/nrao57/AWSCognitoManual/blob/master/imgs/userpool.png)
 
 ### Only code needed to get the signed-in user info:
     var poolData = {
@@ -31,11 +31,11 @@ The full How-to can be found at https://github.com/aws/aws-amplify/tree/master/p
 
 ### To set the authenticated and unauthenticated credentials of the user pool
 1. Go to the Cognito identity pool settings
-![](https://github.com/nrao57/AWSCognitoManual/blob/master/identitypool.png)
+![](https://github.com/nrao57/AWSCognitoManual/blob/master/imgs/identitypool.png)
 
 2. Click "Edit Identity Pool"
 3. Create a new "Unauthenticated Role" and "Authenticated Role"
-![](https://github.com/nrao57/AWSCognitoManual/blob/master/createroles.png)
+![](https://github.com/nrao57/AWSCognitoManual/blob/master/imgs/createroles.png)
 
 4. Add polcies for the Amazon Resources you want the signed-in users to have access to 
 
