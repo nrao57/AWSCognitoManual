@@ -154,4 +154,7 @@ And to verify once the verfification code is sent
     </script>
 
 GetSession needed to get current logged in user
+App Client settings (OAuth, OpenID, ...)
+User settings from local storage
+
 
