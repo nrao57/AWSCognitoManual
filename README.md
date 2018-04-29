@@ -40,5 +40,22 @@ The full How-to can be found at https://github.com/aws/aws-amplify/tree/master/p
 4. Add polcies for the Amazon Resources you want the signed-in users to have access to 
 
 ### To Register New Users
+create a config file that looks like
+        window._config = {
+            cognito: {
+                userPoolId: '..', // e.g. us-east-2_...
+                userPoolClientId: '...', 
+                region: '...', // e.g. us-east-2
+            identityPoolId : '...',
+            clientId: '...'
+            },
+            api: {
+                invokeUrl: '' // e.g. https://rc7nyt4tql.execute-api.us-west-2.amazonaws.com/prod',
+            }
+        };
+        
+   
+
+
 GetSession needed to get current logged in user
 
