@@ -40,7 +40,7 @@ The full How-to can be found at https://github.com/aws/aws-amplify/tree/master/p
 4. Add polcies for the Amazon Resources you want the signed-in users to have access to 
 
 ### To Register New Users
-create a config file that looks like
+Create a config file that looks like
     
     window._config = {
         cognito: {
@@ -55,8 +55,103 @@ create a config file that looks like
     }
     };
 
-   
+To register a user with the username "username" and password "password"
 
+    <script>
+		
+		var username;
+		var password;
+		var poolData;
+		
+	  function registerButton() {
+			
+		username = document.getElementById("emailInputRegister").value;
+		password =  document.getElementById("passwordInputRegister").value;	
+		
+		poolData = {
+				UserPoolId : '...', // Your user pool id here
+				ClientId : '...' // Your client id here
+			};		
+		
+		var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+
+		var attributeList = [];
+
+		var dataEmail = {
+			Name : 'email', 
+			Value : username, //get from form field
+		};
+
+		var dataPhoneNumber = { //not needed for our application
+			Name : 'phone_number', //sdfsdfsd
+			Value : '+15555555555' //sdfsdfsdf
+		};
+		
+		var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
+		//var attributePhoneNumber = new AmazonCognitoIdentity.CognitoUserAttribute(dataPhoneNumber);
+
+		attributeList.push(attributeEmail);
+		//attributeList.push(attributePhoneNumber);
+
+		userPool.signUp(username, password, attributeList, null, function(err, result){
+			if (err) {
+				alert(err.message || JSON.stringify(err));
+				return;
+			}
+			cognitoUser = result.user;
+			console.log('user name is ' + cognitoUser.getUsername());
+			//change elements of page
+			document.getElementById("titleheader").innerHTML = "Enter your verification code";
+			var pass1 = document.getElementById("passwordInputRegister");
+			pass1.type="hidden";
+			var pass2 = document.getElementById("password2InputRegister");
+			pass2.type="hidden";
+			var vCode = document.getElementById("codeInputVerify");
+			vCode.type="text";
+			var emailfield = document.getElementById("emailInputRegister");
+			emailfield.type="hidden"
+			//change name and action of registerButton
+			var mButt = document.getElementById("mainbutton");
+			mButt.innerHTML="Verify";
+			mButt.onclick = verifyButton;
+			
+		});
+	  }
+
+And to verify once the verfification code is sent
+
+	function verifyButton() {	
+		var verificationCode = document.getElementById("codeInputVerify").value;
+
+		var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+		var userData = {
+			Username : username,
+			Pool : userPool
+		};
+
+		var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+		cognitoUser.confirmRegistration(verificationCode, true, function(err, result) {
+			if (err) {
+				alert(err.message || JSON.stringify(err));
+				return;
+			} 
+			
+			location.href='thanks_in.html';
+			console.log('call result: ' + result);
+		});
+		
+		
+		
+		 cognitoUser.resendConfirmationCode(function(err, result) {
+			if (err) {
+				alert(err.message || JSON.stringify(err));
+				return;
+			}
+			console.log('call result: ' + result);
+		});
+		
+	}
+    </script>
 
 GetSession needed to get current logged in user
 
