@@ -153,10 +153,43 @@ And to verify once the verfification code is sent
 	}
     </script>
 
-GetSession needed to get current logged in user
+	
+### Get the logged in user from local storage 
+(Don't forget: GetSession needed to get current logged in user)
 
-App Client settings (OAuth, OpenID, ...)
+    var poolData = {
+        UserPoolId : _config.cognito.userPoolId, // Your user pool id here
+        ClientId : _config.cognito.clientId // Your client id here
+    };
+    var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+    var cognitoUser = userPool.getCurrentUser();
+	
+	cognitoUser.getUserAttributes(function(err, result) {
+        if (err) {
+            alert(err.message || JSON.stringify(err));
+            return;
+        }
+		
+        for (i = 0; i < result.length; i++) {
+            console.log('attribute ' + result[i].getName() + ' has value ' + result[i].getValue());
+        }
+    });
+	
+### Log Out Current User
 
-User settings from local storage
+    var poolData = {
+        UserPoolId : '...', // Your user pool id here
+        ClientId : '...' // Your client id here
+    };
+    var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+    var cognitoUser = userPool.getCurrentUser();
+	
+	//log out 
+	cognitoUser.signOut();
+	
+
+### App Client settings (OAuth, OpenID, ...)
+
+### User settings from local storage
 
 
