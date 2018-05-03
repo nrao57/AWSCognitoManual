@@ -17,6 +17,11 @@ The full How-to can be found at https://github.com/aws/aws-amplify/tree/master/p
 
 ## How-To
 
+1. User Pool - Database for storing all Users and User Information 
+2. Identity Pool - Stores Credentials and Roles for User Pools
+
+![](https://github.com/nrao57/AWSCognitoManual/blob/master/imgs/CognitoDiagram.PNG)
+
 ### Setup User Pool on AWS Cognito Console
   - Under App Integration
   ![](https://github.com/nrao57/AWSCognitoManual/blob/master/imgs/userpool.png)
