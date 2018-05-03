@@ -22,6 +22,8 @@ The full How-to can be found at https://github.com/aws/aws-amplify/tree/master/p
 
 ![](https://github.com/nrao57/AWSCognitoManual/blob/master/imgs/CognitoDiagram.PNG)
 
+[More information can be found here](https://docs.aws.amazon.com/cognito/latest/developerguide/what-is-amazon-cognito.html)
+
 ### Setup User Pool on AWS Cognito Console
   - Under App Integration
   ![](https://github.com/nrao57/AWSCognitoManual/blob/master/imgs/userpool.png)
