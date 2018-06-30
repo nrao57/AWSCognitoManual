@@ -1,4 +1,4 @@
-# AWSCognitoManual
+# AWS Cognito Manual
 A manual for how to use AWS Javascript SDK
 
 AWS Resources Needed
